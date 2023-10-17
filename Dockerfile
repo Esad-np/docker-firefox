@@ -27,6 +27,7 @@ ARG FIREFOX_VERSION=116.0.3-r0
 
 # Define working directory.
 WORKDIR /tmp
+RUN apk --no-cache add curl
 
 # Install Firefox.
 RUN \
