@@ -20,6 +20,7 @@ ARG DOCKER_IMAGE_VERSION=
 
 # Define software versions.
 ARG FIREFOX_VERSION=128.0.3-r0
+
 #ARG PROFILE_CLEANER_VERSION=2.36
 
 # Define software download URLs.
