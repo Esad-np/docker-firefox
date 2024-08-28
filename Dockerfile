@@ -13,13 +13,13 @@ RUN gcc -static -o membarrier_check membarrier_check.c
 RUN strip membarrier_check
 
 # Pull base image.
-FROM jlesage/baseimage-gui:alpine-3.18-v4.5.2
+FROM jlesage/baseimage-gui:alpine-3.20-v4.6.3
 
 # Docker image version is provided via build arg.
 ARG DOCKER_IMAGE_VERSION=
 
 # Define software versions.
-ARG FIREFOX_VERSION=119.0-r0
+ARG FIREFOX_VERSION=128.0.3-r0
 #ARG PROFILE_CLEANER_VERSION=2.36
 
 # Define software download URLs.
@@ -41,6 +41,8 @@ RUN \
     add-pkg \
         # WebGL support.
         mesa-dri-gallium \
+        # Audio support.
+        libpulse \
         # Icons used by folder/file selection window (when saving as).
         adwaita-icon-theme \
         # A font is needed.
@@ -89,7 +91,8 @@ RUN \
 # Set public environment variables.
 ENV \
     FF_OPEN_URL= \
-    FF_KIOSK=0
+    FF_KIOSK=0 \
+    FF_CUSTOM_ARGS=
 
 # Metadata.
 LABEL \

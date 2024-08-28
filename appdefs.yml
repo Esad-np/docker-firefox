@@ -17,7 +17,7 @@ app:
     description: |-
       Mozilla Firefox is a free and open-source web browser developed by Mozilla
       Foundation and its subsidiary, Mozilla Corporation.
-    url: https://www.mozilla.org/en-US/firefox/
+    url: https://www.mozilla.org/firefox/
   unraid:
     support_url: https://forums.unraid.net/topic/69440-support-firefox/
     category: "Tools:"
@@ -102,6 +102,37 @@ app:
               for more details.
             - Make sure the kernel of your Linux distribution is up-to-date.
   changelog:
+    - version: 24.08.1
+      date: 2024-08-05
+      changes:
+        - 'Updated Firefox to version 128.0.3-r0.'
+    - version: 24.07.1
+      date: 2024-07-02
+      changes:
+        - 'Updated Firefox to version 126.0.1-r0.'
+        - 'Updated baseimage to version 4.6.3, which brings the following changes:'
+        - '2:Audio support through web browser.'
+        - '2:Web authentication support.'
+        - '2:Better support of GTK4 applications.'
+        - '2:Updated noVNC to version 1.5.0.'
+        - '2:Updated web UI components (Bootstrap, Font Awesome).'
+        - '2:When connecting, the control bar is now temporarily shown only once.'
+        - '2:During package mirror setup, make sure to keep permissions of copied files.'
+    - version: 24.05.1
+      date: 2024-05-02
+      changes:
+        - 'Updated Firefox to version 125.0.3-r0.'
+    - version: 24.04.1
+      date: 2024-04-12
+      changes:
+        - 'Updated Firefox to version 124.0.1-r0.'
+    - version: 24.01.1
+      date: 2024-01-20
+      changes:
+        - 'Updated Firefox to version 120.0.1-r0.'
+        - 'Updated baseimage to version 4.5.3, based on Alpine Linux 3.19, which brings the following changes:'
+        - '2:Disabled fullscreen support when page is loaded into an iFrame.'
+        - '2:Rebuilt against latest distro images to get security fixes.'
     - version: 23.11.3
       date: 2023-11-19
       changes:
@@ -373,6 +404,11 @@ container:
       description: >-
         The URL to open when {{ app.friendly_name }} starts.
       type: public
+      unraid_template:
+        title: "Open URL"
+        display: advanced
+        required: false
+        mask: false
     - name: FF_KIOSK
       description: >-
         Set to `1` to enable kiosk mode.  This mode launches Firefox in a very
@@ -380,6 +416,25 @@ container:
         customer-facing displays.
       type: public
       default: 0
+      unraid_template:
+        title: "Kiosk Mode"
+        description: >-
+          Set to 1 to enable kiosk mode.  This mode launches Firefox in a very
+          restricted and limited mode best suitable for public areas or
+          customer-facing displays.
+        display: advanced
+        required: false
+        mask: false
+    - name: FF_CUSTOM_ARGS
+      description: >-
+        Custom argument(s) to pass when launching {{ app.friendly_name }}.
+      type: public
+      default: 0
+      unraid_template:
+        title: "Custom Arguments"
+        display: advanced
+        required: false
+        mask: false
 
   # Volumes
   volumes: []
